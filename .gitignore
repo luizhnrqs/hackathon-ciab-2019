@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/Decision/v15
+/Decision.API/obj/Debug
+/Decision.API/bin
+/Decision.Mobile/bin
+/Decision.Mobile/obj/Debug
+/packages
