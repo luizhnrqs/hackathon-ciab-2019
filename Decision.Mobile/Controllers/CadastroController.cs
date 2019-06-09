@@ -23,5 +23,20 @@ namespace Decision.Mobile.Controllers
         {
             return View();
         }
+
+        public ActionResult Cadastro3()
+        {
+            return View();
+        }
+
+        public ActionResult Cadastro4()
+        {
+            return View();
+        }
+
+        public ActionResult Cadastro5()
+        {
+            return View();
+        }
     }
 }
