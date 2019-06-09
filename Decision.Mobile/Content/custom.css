@@ -1,0 +1,94 @@
+
+@media (max-width: 700px)
+{
+	body{
+	background: #ffffff;
+	}
+
+	.logoPequeno{
+	margin-top: 20px;
+	}
+
+	.textotitulos{
+		margin-top: 100px;
+		color: #660000;
+		font-size: 16px;
+		text-align: center;
+	}
+
+
+
+	.upload-btn-wrapper input[type=file] {
+	  opacity: 0;
+	}
+
+	.upload-btn-wrapper {
+  		position: relative;
+}
+
+	.btn {
+		margin-top: 120px;
+		border: 1px solid #660000;
+		color: #660000;
+		height: 60px;
+		width: 220px;
+		border-radius: 8px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.btn3 {
+		background: #ffffff;
+		margin-top: 20px;
+		border: 1px solid #660000;
+		color: #660000;
+		height: 60px;
+		width: 220px;
+		border-radius: 8px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.btn2 {
+		background: #660000;
+		border: 1px solid #660000;
+		color: #ffffff;
+		height: 60px;
+		width: 220px;
+		border-radius: 8px;
+		font-size: 20px;
+	}
+
+	.upload-btn-wrapper input[type=file] {
+		font-size: 100px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 0;
+	}
+
+	.caixaDocumento{
+		border:none;
+		border-left: 8px solid #660000;
+		border-right: 8px solid #660000;
+		height: 220px;
+	}
+
+	.tituloDocumento{
+		margin-top: 20px;
+		color: #660000;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.dadosDocumento ul{
+		text-decoration: none;
+		list-style: none;
+		text-align: right;
+		font-weight: bold;
+	}
+	.saidadados{
+		text-align: left !important;
+		font-weight: normal !important;
+		margin-left: -30px;
+	}
+}

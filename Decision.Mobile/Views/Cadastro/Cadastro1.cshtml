@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <link type="text/css" rel="stylesheet" href="../Content/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../Content/custom.css">
+
+
+    <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../Scripts/apiCall.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var myInput = document.getElementById('photo');
+
+            function sendPic() {
+                var file = myInput.files[0];
+
+                var retornoAPI = EnviarFoto(file);
+                // Send file here either by adding it to a `FormData` object
+                // and sending that via XHR, or by simply passing the file into
+                // the `send` method of an XHR instance.
+            }
+
+            myInput.addEventListener('change', sendPic, false);
+        });
+    </script>
+
+</head>
+<body>
+
+    <div class="logoPequeno">
+        <img src="../imagens/logoPequeno.png" class="rounded mx-auto d-block" />
+    </div>
+
+    <div class="textotitulos">Vamos começar! Tire a foto do seu <b>RG</b> ou da sua<br><b>Habilitação</b> para validar seus dados.</div>
+
+
+    <div class="upload-btn-wrapper">
+        <button class="btn rounded mx-auto d-block">Tirar foto</button>
+        <input id="photo" type="file" accept="image/*;capture=camera" />
+    </div>
+
+
+</body>
+</html>
