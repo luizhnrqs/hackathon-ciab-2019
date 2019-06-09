@@ -2,8 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Decision.API",
-    "\\Decision.API\\App_Data",
-    "\\Decision.API\\App_Start"
+    "\\Decision.Mobile"
   ],
   "PreviewInSolutionExplorer": false
 }

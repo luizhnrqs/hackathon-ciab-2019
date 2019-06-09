@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -32,8 +34,10 @@ namespace Decision.Api.Controllers
             VisualFeatureTypes.Tags
         };
 
-        public async Task<IHttpActionResult> Post([FromBody]byte[] image)
+        public async Task<IHttpActionResult> Post()
         {
+            HttpRequestMessage request = this.Request;
+
             ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
@@ -42,7 +46,7 @@ namespace Decision.Api.Controllers
             computerVision.Endpoint = "https://eastus2.api.cognitive.microsoft.com";
 
             RecognizeTextInStreamHeaders analysis = null;
-            using (Stream imageStream = new MemoryStream(image, 0, image.Length))
+            using (Stream imageStream = await request.Content.ReadAsStreamAsync())
             {
                 analysis = await computerVision.RecognizeTextInStreamAsync(imageStream, TextRecognitionMode.Printed);
             }
