@@ -17,6 +17,23 @@
     <script type="text/javascript" src="../../Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../Scripts/apiCall.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var myInput = document.getElementById('selfie');
+
+            function sendPic() {
+                var file = myInput.files[0];
+
+                var retornoAPI = TirarSelf(file);
+                // Send file here either by adding it to a `FormData` object
+                // and sending that via XHR, or by simply passing the file into
+                // the `send` method of an XHR instance.
+            }
+
+            myInput.addEventListener('change', sendPic, false);
+        });
+    </script>
 </head>
 <body>
 
@@ -29,7 +46,7 @@
 
 	<div class="upload-btn-wrapper">
 	  <button class="btn rounded mx-auto d-block">Tirar foto</button>
-	  <input type="file" accept="image/*" capture="camera" />
+	  <input id="selfie" type="file" accept="image/*" capture="camera" />
 	</div>
 
 
