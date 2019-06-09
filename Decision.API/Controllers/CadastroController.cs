@@ -34,6 +34,11 @@ namespace Decision.Api.Controllers
             VisualFeatureTypes.Tags
         };
 
+        public string Get()
+        {
+            return "teste";
+        }
+
         public async Task<IHttpActionResult> Post()
         {
             HttpRequestMessage request = this.Request;
