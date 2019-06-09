@@ -38,5 +38,10 @@ namespace Decision.Mobile.Controllers
         {
             return View();
         }
+
+        public ActionResult Finalizar()
+        {
+            return View();
+        }
     }
 }

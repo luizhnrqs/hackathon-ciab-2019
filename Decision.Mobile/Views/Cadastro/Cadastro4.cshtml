@@ -17,18 +17,25 @@
     <script type="text/javascript" src="../../Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../Scripts/apiCall.js"></script> 
+
+    <script type="text/javascript">
+
+        function navegar() {
+            window.location.href = "Cadastro5";
+        }
+    </script>
 </head>
 <body>
 
 
 	<div class="tituloDocumento">Sua selfie, curtiu?</div>
 	
-	<div class="caixaDocumento col-md-4">
+	<div class="col-md-4">
         <div class=""><img style="display:block; margin-left: auto; margin-right: auto" src="../../imagens/foto_selfie.jpeg"></div>
     </div>
 	
 	<div class="botoes row col-md-2">
-		<button class="btn2 mx-auto d-block">Confirmar</button>
+		<button id="confirmar" onclick="navegar()" class="btn2 mx-auto d-block">Confirmar</button>
 
 		<div class="upload-btn-wrapper col-md-2">
 		<button class="btn3 rounded mx-auto d-block">Tirar outra foto</button>

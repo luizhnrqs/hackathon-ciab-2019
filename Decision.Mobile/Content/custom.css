@@ -6,8 +6,12 @@
 	}
 
 	.logoPequeno{
-	margin-top: 20px;
+	    margin-top: 20px;
 	}
+
+    .logoVisto{
+        margin-top: 100px;
+    }
 
 	.textotitulos{
 		margin-top: 100px;
@@ -16,7 +20,12 @@
 		text-align: center;
 	}
 
-
+    .textoFinalizacao {
+        margin-top: 15px;
+        color: #660000;
+        font-size: 16px;
+        text-align: center;
+    }
 
 	.upload-btn-wrapper input[type=file] {
 	  opacity: 0;
