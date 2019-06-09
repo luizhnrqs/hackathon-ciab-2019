@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -31,7 +32,7 @@ namespace Decision.Api.Controllers
             VisualFeatureTypes.Tags
         };
 
-        public async Task<IHttpActionResult> Post()
+        public async Task<IHttpActionResult> Post([FromBody]byte[] image)
         {
             ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -40,7 +41,11 @@ namespace Decision.Api.Controllers
             // Specify the Azure region
             computerVision.Endpoint = "https://eastus2.api.cognitive.microsoft.com";
 
-            RecognizeTextHeaders analysis = await computerVision.RecognizeTextAsync(remoteImageUrl, TextRecognitionMode.Printed);
+            RecognizeTextInStreamHeaders analysis = null;
+            using (Stream imageStream = new MemoryStream(image, 0, image.Length))
+            {
+                analysis = await computerVision.RecognizeTextInStreamAsync(imageStream, TextRecognitionMode.Printed);
+            }
 
             string operation = analysis.OperationLocation.Split('/').GetValue(analysis.OperationLocation.Split('/').Length - 1).ToString();
 
@@ -73,7 +78,7 @@ namespace Decision.Api.Controllers
                     cadastro.Validade = resultado;
                 }
 
-                 
+
             }
 
             return Ok(cadastro);
