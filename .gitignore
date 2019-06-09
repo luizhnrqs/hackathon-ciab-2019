@@ -8,3 +8,5 @@
 /Decision.Mobile/bin
 /Decision.Mobile/obj/Debug
 /packages
+/Decision.API/obj/Release
+/Decision.Mobile/obj/Release
