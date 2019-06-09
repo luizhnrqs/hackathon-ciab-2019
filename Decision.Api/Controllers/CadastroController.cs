@@ -38,7 +38,7 @@ namespace Decision.Api.Controllers
 
         public async Task<IHttpActionResult> Post()
         {
-            HttpRequestMessage request = this.Request;
+            //HttpRequestMessage request = this.Request;
 
             ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -47,11 +47,13 @@ namespace Decision.Api.Controllers
             // Specify the Azure region
             computerVision.Endpoint = "https://eastus2.api.cognitive.microsoft.com";
 
-            RecognizeTextInStreamHeaders analysis = null;
-            using (Stream imageStream = await request.Content.ReadAsStreamAsync())
-            {
-                analysis = await computerVision.RecognizeTextInStreamAsync(imageStream, TextRecognitionMode.Printed);
-            }
+            RecognizeTextHeaders analysis = null;
+            //using (Stream imageStream = await request.Content.ReadAsStreamAsync())
+            //{
+            //    analysis = await computerVision.RecognizeTextInStreamAsync(imageStream, TextRecognitionMode.Printed);
+            //}
+
+            analysis = await computerVision.RecognizeTextAsync("https://amazonasatual.com.br/wp-content/uploads/2018/08/CNH-falsa-Manaus.jpeg", TextRecognitionMode.Printed);
 
             string operation = analysis.OperationLocation.Split('/').GetValue(analysis.OperationLocation.Split('/').Length - 1).ToString();
 
