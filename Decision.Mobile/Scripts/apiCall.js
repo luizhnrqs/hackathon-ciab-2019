@@ -23,7 +23,7 @@ function carregarSplash(){
     // }
 
     function EnviarFoto(foto){
-        const urlBase = "http://localhost:27512";
+        const urlBase = "https://decision-api.azurewebsites.net";
 
         const url = urlBase + '/api/cadastro';
 
