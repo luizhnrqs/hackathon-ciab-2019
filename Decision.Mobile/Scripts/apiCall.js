@@ -22,50 +22,39 @@ function carregarSplash(){
     //     return myJson;
     // }
 
-    function EnviarFoto(foto){
-        const urlBase = "https://decision-api.azurewebsites.net";
+function EnviarFoto(foto) {
 
-        const url = urlBase + '/api/cadastro';
+    var formData = new FormData();
+    //var totalFiles = document.getElementById("FileUpload").files.length;
 
-        var formData = new FormData();
+    for (var i = 0; i < foto.length; i++) {
+        var file = document.getElementById("photo").files[i];
 
-        formData.append("arquivo", foto);
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            // async: false,
-            headers: {
-                'Content-Type': 'multipart/encrypted'
-            },
-            dataType: 'json',
-            success: function (e) {
-              alert("success");
-            },
-            error: function (e){
-                alert("erro " + e);
-            }
-        }).done(function(msg){
-            alert('done');
-          });
-        // $.ajax({
-        //     url: url,
-        //     type: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     dataType: 'json',
-        //     success: function (data) {
-        //       alert(data);
-        //     },
-        //     error: function (data){
-        //         alert("erro " + data);
-        //     }
-        // }).done(function(msg){
-        //     alert('done');
-        //   });
+        formData.append("photo", file);
+        //formData.append("guid", theGuid);
     }
+
+    $.ajax({
+        type: 'post',
+        url: 'https://decision-api.azurewebsites.net/api/cadastro',
+        data: formData,
+        dataType: 'json',
+        contentType: 'multipart/encrypted',
+        processData: false,
+        success: function (response) {
+            //alert('succes!!');
+            window.location.href = "Cadastro2";
+        },
+        error: function (error) {
+            alert(error);
+        }
+    });
+
+}
+
+function TirarSelf(foto) {
+    window.location.href = "Cadastro4";
+}
 
 function CapturarDados(id){
     const userAction = async () => {
