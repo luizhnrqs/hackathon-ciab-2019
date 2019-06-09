@@ -23,7 +23,7 @@
             var myInput = document.getElementById('photo');
 
             function sendPic() {
-                var file = myInput.files;
+                var file = myInput.files[0];
 
                 var retornoAPI = EnviarFoto(file);
                 // Send file here either by adding it to a `FormData` object
