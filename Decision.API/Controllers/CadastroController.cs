@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
-
+using Decision.Api.Models;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
@@ -19,7 +20,7 @@ namespace Decision.Api.Controllers
         private const string remoteImageUrl =
            "https://amazonasatual.com.br/wp-content/uploads/2018/08/CNH-falsa-Manaus.jpeg";
 
-        private static RecognizeTextHeaders analysis = null;
+        //private static RecognizeTextHeaders analysis = null;
 
         // Specify the features to return
         private static readonly List<VisualFeatureTypes> features =
@@ -30,12 +31,7 @@ namespace Decision.Api.Controllers
             VisualFeatureTypes.Tags
         };
 
-        public string Get()
-        {
-            return "teste 123";
-        }
-
-        public void Post()
+        public async Task<IHttpActionResult> Post()
         {
             ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -44,33 +40,43 @@ namespace Decision.Api.Controllers
             // Specify the Azure region
             computerVision.Endpoint = "https://eastus2.api.cognitive.microsoft.com";
 
+            RecognizeTextHeaders analysis = await computerVision.RecognizeTextAsync(remoteImageUrl, TextRecognitionMode.Printed);
 
-            Console.WriteLine("Images being analyzed ...");
-            var t1 = AnalyzeRemoteAsync(computerVision);
-            //var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
-
-            //Task.WhenAll(t1).Wait(50000);
-
-            //var result = DisplayResults(analysis, computerVision);
-
-            Task.WhenAll(t1).Wait(5000);
-        }
-
-        // Analyze a remote image
-        private static async Task AnalyzeRemoteAsync(ComputerVisionClient computerVision)
-        {
-            analysis = await computerVision.RecognizeTextAsync(remoteImageUrl, TextRecognitionMode.Printed);
-            var result = DisplayResults(analysis, computerVision);
-
-            Task.WhenAll(result).Wait(5000);
-        }
-
-        // Display the most relevant caption for the image
-        private static async Task DisplayResults(RecognizeTextHeaders analysis, ComputerVisionClient computerVision)
-        {
             string operation = analysis.OperationLocation.Split('/').GetValue(analysis.OperationLocation.Split('/').Length - 1).ToString();
 
+            Thread.Sleep(5000);
+
             TextOperationResult result = await computerVision.GetTextOperationResultAsync(operation);
+
+            Cadastro cadastro = new Cadastro();
+
+            cadastro.Nome = result.RecognitionResult.Lines[5].Text;
+            cadastro.RG = result.RecognitionResult.Lines[7].Text;
+            cadastro.CPF = result.RecognitionResult.Lines[11].Text;
+
+            {
+                DateTime resultado;
+
+                if (DateTime.TryParse(result.RecognitionResult.Lines[12].Text, out resultado))
+                {
+                    cadastro.DtNascimento = resultado;
+                }
+            }
+
+            cadastro.NomeMae = result.RecognitionResult.Lines[19].Text;
+
+            {
+                DateTime resultado;
+
+                if (DateTime.TryParse(result.RecognitionResult.Lines[29].Text, out resultado))
+                {
+                    cadastro.Validade = resultado;
+                }
+
+                 
+            }
+
+            return Ok(cadastro);
         }
     }
 }
