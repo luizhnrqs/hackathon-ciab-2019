@@ -1,6 +1,6 @@
 function carregarSplash(){
     setTimeout(() => {
-        window.location.href = window.location.pathname.replace("index", "cadastro1");
+        window.location.href = window.location.pathname.replace("Cadastro/", "Cadastro/Cadastro1");
     }, 2500);
 }
 
