@@ -6,7 +6,7 @@ using System.Web.Http;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-namespace Decision.API.Controllers
+namespace Decision.Api.Controllers
 {
     public class CadastroController : ApiController
     {
@@ -49,20 +49,20 @@ namespace Decision.API.Controllers
             var t1 = AnalyzeRemoteAsync(computerVision);
             //var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
+            //Task.WhenAll(t1).Wait(50000);
+
+            //var result = DisplayResults(analysis, computerVision);
+
             Task.WhenAll(t1).Wait(5000);
-
-            var result = DisplayResults(analysis, computerVision);
-
-            Task.WhenAll(result).Wait(5000);
         }
 
         // Analyze a remote image
         private static async Task AnalyzeRemoteAsync(ComputerVisionClient computerVision)
         {
             analysis = await computerVision.RecognizeTextAsync(remoteImageUrl, TextRecognitionMode.Printed);
-            //var result = DisplayResults(analysis, computerVision);
+            var result = DisplayResults(analysis, computerVision);
 
-
+            Task.WhenAll(result).Wait(5000);
         }
 
         // Display the most relevant caption for the image

@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MOBILE", "MOBILE", "{6B7084
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decision.Mobile", "Decision.Mobile\Decision.Mobile.csproj", "{E3393486-113F-44FB-B43C-024D78B86545}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decision.Api", "Decision.Api\Decision.Api.csproj", "{0A0E44F7-E597-4057-9E38-597972353044}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{E3393486-113F-44FB-B43C-024D78B86545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3393486-113F-44FB-B43C-024D78B86545}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3393486-113F-44FB-B43C-024D78B86545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A0E44F7-E597-4057-9E38-597972353044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A0E44F7-E597-4057-9E38-597972353044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A0E44F7-E597-4057-9E38-597972353044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A0E44F7-E597-4057-9E38-597972353044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E3393486-113F-44FB-B43C-024D78B86545} = {6B7084FF-EEF2-44AC-84CD-F0656B1F7E57}
+		{0A0E44F7-E597-4057-9E38-597972353044} = {A5A79DEE-6413-4542-9FFF-C674905348D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A38B18A1-D3F7-4075-B113-353B1DBC7E17}
