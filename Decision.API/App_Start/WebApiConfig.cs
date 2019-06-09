@@ -10,7 +10,10 @@ namespace Decision.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 

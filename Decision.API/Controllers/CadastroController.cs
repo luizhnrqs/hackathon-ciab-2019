@@ -16,10 +16,7 @@ namespace Decision.Api.Controllers
     {
         // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "1df9a911fd2844d5a75db1026761bcd2";
-
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
-        private const string localImagePath = @"<LocalImage>";
-
+                
         private const string remoteImageUrl =
            "https://amazonasatual.com.br/wp-content/uploads/2018/08/CNH-falsa-Manaus.jpeg";
 
